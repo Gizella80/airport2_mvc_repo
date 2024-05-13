@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<table >
+			<tr th:each="flight : ${flightlistdto.getFlightDtos()}" >
+					
+						<td th:text="${flight.getCityOfDepature()}"></td>
+						<td th:text="${flight.getTimeOfDepature()}"></td>
+						<td th:text="${flight.getCityOfArrival()}"></td>
+						<td th:text="${flight.getTimeOfArrival()}"></td>
+						<td th:text="${flight.getFlightNumber()}"></td>
+						<td th:text="${flight.getCaptain()}"></td>
+						
+						<td action = "/flights/flighttime" th:text="${flight.getFlightMinutes()}"></td>
+						
+						
+						
+		</table>
+		
+	
+	
+		
+	
+	</body>
+</html>
