@@ -9,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name="flights")
@@ -38,8 +37,6 @@ public class Flight {
 	@Column(name="captain")
 	private String captain;
 	
-	@Transient
-	private long flightMinutes ;
 	
 	public Flight() {
 		
@@ -55,8 +52,7 @@ public class Flight {
 		this.timeOfArrival = timeOfArrival;
 		this.flightNumber = flightNumber;
 		this.captain = captain;
-		this.flightMinutes = ChronoUnit.MINUTES.between(this.timeOfDepature,this.timeOfArrival);
-	}
+	}	
 
 	public int getId() {
 		return id;
@@ -115,13 +111,11 @@ public class Flight {
 	}
 
 	public long getFlightMinutes() {
-		
+		long flightMinutes = ChronoUnit.MINUTES.between(this.timeOfDepature,this.timeOfArrival);
 		return flightMinutes;
 	}
 
-	public void setFlightMinutes() {
-		this.flightMinutes = ChronoUnit.MINUTES.between(this.timeOfDepature,this.timeOfArrival);
-	}
+	
 	
 	
 	

@@ -11,10 +11,10 @@ public class FlightDto {
 	private LocalDateTime timeOfArrival;
 	private String flightNumber;
 	private String captain;
-	private long flightMinutes;
+
 	
 	public FlightDto(String cityOfDepature, LocalDateTime timeOfDepature, String cityOfArrival,
-			LocalDateTime timeOfArrival, String flightNumber, String captain, long flightMinutes) {
+			LocalDateTime timeOfArrival, String flightNumber, String captain) {
 		super();
 		this.cityOfDepature = cityOfDepature;
 		this.timeOfDepature = timeOfDepature;
@@ -22,7 +22,7 @@ public class FlightDto {
 		this.timeOfArrival = timeOfArrival;
 		this.flightNumber = flightNumber;
 		this.captain = captain;
-		this.flightMinutes = flightMinutes;
+		;
 	}
 
 	public String getCityOfDepature() {
@@ -74,18 +74,17 @@ public class FlightDto {
 	}
 
 	public long getFlightMinutes() {
+		long flightMinutes = ChronoUnit.MINUTES.between(this.timeOfDepature,this.timeOfArrival);
 		return flightMinutes;
 	}
 
-	public void setFlightMinutes() {
-		this.flightMinutes = ChronoUnit.MINUTES.between(this.timeOfDepature,this.timeOfArrival);
-	}
+	
 
 	@Override
 	public String toString() {
 		return "FlightDto [cityOfDepature=" + cityOfDepature + ", timeOfDepature=" + timeOfDepature + ", cityOfArrival="
 				+ cityOfArrival + ", timeOfArrival=" + timeOfArrival + ", flightNumber=" + flightNumber + ", captain="
-				+ captain + ", flightMinutes=" + flightMinutes + "]";
+				+ captain + "]";
 	}
 	
 

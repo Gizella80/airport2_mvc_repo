@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import pti.sb_airport2_mvc.dto.CaptainListDto;
 import pti.sb_airport2_mvc.dto.FlightListDto;
 import pti.sb_airport2_mvc.service.AppService;
 
@@ -32,14 +32,38 @@ public class AppController {
 		
 		return "flights.html";
 	}
-	@GetMapping("/flights/flighttime")
+	@GetMapping("/flighttime")
 	public String getFlightDuration(Model model) {
 		
 
 		FlightListDto flightListDto = service.getAllFlightsWithFlightTime();
 		model.addAttribute("flightlistdto", flightListDto);
 		
-		return "flights.html";
+		return "flighttime.html";
 	}
+	
+	@GetMapping("/captains")
+	public String showCaptains(Model model) {
+		
+		CaptainListDto captainDtoList = service.getAllCaptains();
+		
+		model.addAttribute("captainlistdto", captainDtoList);
+		return "captains.html";
+	}
+	
+	@GetMapping("/captainresult")
+	public String showCaptainReturnigWithTransfer(Model model) {
+		 CaptainListDto captainListDto = service.getCaptainReturningWithTransfer();
+		 
+		 model.addAttribute("captainlistdto", captainListDto);
+		 
+		
+		return "captainresult.html";
+	}
+	
+	
+	
+	
+	
 	
 }

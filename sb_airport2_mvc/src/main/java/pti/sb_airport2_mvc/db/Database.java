@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.SelectionQuery;
 import org.springframework.stereotype.Repository;
 
+
 import pti.sb_airport2_mvc.model.Flight;
 
 @Repository
@@ -30,7 +31,7 @@ private SessionFactory sessionFactory;
 			Session session = sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();
 		
-			SelectionQuery<Flight> query = session.createSelectionQuery("Select f FROM Flight f ", Flight.class);
+			SelectionQuery<Flight> query = session.createSelectionQuery("Select f FROM Flight f ORDER BY f.timeOfDepature ASC", Flight.class);
 			
 			flights = query.getResultList();
 			
@@ -40,4 +41,7 @@ private SessionFactory sessionFactory;
 		
 		return flights;
 	}
+
+	
+	
 }
