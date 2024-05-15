@@ -142,7 +142,7 @@ public FlightListDto getAllFlightsWithFlightTime() {
 		
 		for(int index_captainDtoList = 0;index_captainDtoList < captainDtoList.size(); index_captainDtoList++) {
 			CaptainDto currentCaptainDto = captainDtoList.get(index_captainDtoList);
-			if(currentCaptainDto.returnedWithTransfer() == true) {
+			if(currentCaptainDto.returnedWithTransfer2() == true) {
 				searchedCaptains.add(currentCaptainDto);
 			}
 				

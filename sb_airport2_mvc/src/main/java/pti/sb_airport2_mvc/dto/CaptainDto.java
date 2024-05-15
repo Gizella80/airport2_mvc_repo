@@ -88,7 +88,35 @@ public class CaptainDto {
 	}
 	
 	
-	
+	public boolean returnedWithTransfer2() {
+		boolean result = false;
+		
+		if(flights.size()>2) {
+			
+			for(int index_flights = 0; index_flights < flights.size()-2; index_flights++) {
+				FlightDto currentFlightDto = flights.get(index_flights);
+				
+				 for(int index_secFlights = (index_flights+1); index_secFlights < flights.size()-1; index_secFlights++) {
+					 
+					 FlightDto nextFlightDto = flights.get(index_secFlights);
+					 FlightDto afterNextFlightDto = flights.get(index_secFlights+1);
+					 if(currentFlightDto.getTimeOfArrival().isBefore(nextFlightDto.getTimeOfDepature()) == true
+							 && currentFlightDto.getCityOfArrival().equals(nextFlightDto.getCityOfDepature())) {
+						 if(nextFlightDto.getTimeOfArrival().isBefore(afterNextFlightDto.getTimeOfDepature())
+								 && nextFlightDto.getCityOfArrival().equals(afterNextFlightDto.getCityOfDepature())
+								 && currentFlightDto.getCityOfDepature().equals(afterNextFlightDto.getCityOfArrival())){
+							 result = true;
+						 }
+						 
+					 } 
+					 
+				 }
+			}
+		}else {
+			result = false;
+		}
+		return result;
+	}
 	
 	
 	
